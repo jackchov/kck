@@ -29,16 +29,18 @@ display_text('3..')
 display_text('2..')
 display_text('1..')
 display_text('START')
+
+#with open("moje_dane.txt", "a") as myfile:
+#    myfile.write("start\n")
 while True:
     display_surface.fill(white)
-
     text = font.render(letters[i%len(letters)], True, green, blue)
-    pygame.time.delay(1000)
+
     i += 1
     display_surface.blit(text, (X // 2, Y // 2))
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
             quit()
-
     pygame.display.flip()
+    pygame.time.delay(1000)
