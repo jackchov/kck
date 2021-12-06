@@ -26,7 +26,7 @@ while True:
 
     text = font.render(letters[i], True, green, blue)
     time.sleep(2)
-    i += (i+1) % len(letters)
+    i += 1s
     textRect = text.get_rect()
     textRect.center = (X // 2, Y // 2)
     display_surface.blit(text, textRect)
