@@ -19,21 +19,23 @@ display_surface = pygame.display.set_mode((X, Y))
 pygame.display.set_caption('Komunikacja Człowiek-Komputer')
 font = pygame.font.Font('freesansbold.ttf', 32)
 
+time_elapsed_since_last_action = 0
+clock = pygame.time.Clock()
 i=0
 
 while True:
     display_surface.fill(white)
 
-    text = font.render(letters[i], True, green, blue)
-    time.sleep(2)
-    i += 1s
-    textRect = text.get_rect()
-    textRect.center = (X // 2, Y // 2)
-    display_surface.blit(text, textRect)
+    dt = clock.tick()
+    time_elapsed_since_last_action += dt
 
+    text = font.render(letters[i%len(letters)], True, green, blue)
+    pygame.time.delay(200)
+    i += 1
+    display_surface.blit(text, (X // 2, Y // 2))
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
             quit()
 
-        pygame.display.update()
+    pygame.display.flip()
